@@ -8,6 +8,7 @@ const SAMPLE = {
 };
 
 import { Input, Output } from "./views/index.js";
+import { Menu } from "./models/index.js";
 
 class App {
 	async run() {
@@ -16,6 +17,9 @@ class App {
 
 		// 2. 코치 이름 입력
 		const namesOfCoach = await Input.readNamesOfCoach();
+		
+		const menu = new Menu(namesOfCoach);
+		const coachArray = menu.getCoachArray();
 			// 구분자(,)로 구분돼있는지 체크 (ERROR)
 			// 코치 이름이 2 <= ? <= 4인지 체크 (ERROR)
 			// 코치 수가 2 <= ? <= 5인지 체크 (ERROR)
