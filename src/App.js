@@ -7,11 +7,15 @@ const SAMPLE = {
 	양식: '라자냐, 그라탱, 뇨끼, 끼슈, 프렌치 토스트, 바게트, 스파게티, 피자, 파니니',
 };
 
+import { Input, Output } from "./views/index.js";
+
 class App {
 	async run() {
 		// 1. 시작 문구 출력
+		Output.printHeader();
 
 		// 2. 코치 이름 입력
+		const namesOfCoach = await Input.readNamesOfCoach();
 			// 구분자(,)로 구분돼있는지 체크 (ERROR)
 			// 코치 이름이 2 <= ? <= 4인지 체크 (ERROR)
 			// 코치 수가 2 <= ? <= 5인지 체크 (ERROR)

@@ -1,7 +1,15 @@
 import { MissionUtils } from "@woowacourse/mission-utils";
+import { OUTPUT } from "./utils/OutputConstants.js";
 
 class Output {
-    constructor() {
+    constructor() {}
+
+    static printHeader() {
+        MissionUtils.Console.print(OUTPUT.START);
+    }
+
+    static printSpace() {
+        MissionUtils.Console.print('\n');
     }
 
     // WoowaError인 경우, 메시지만 출력. 그 외의 에러는 접두사와 함께 출력
