@@ -18,6 +18,28 @@ class MenuValidator {
         coachArray.forEach(coach => this.#isValidNameOfCoach(coach));
     }
 
+    static isValidCannotEatMenu(cannotEatMenuArray, sampleMenu) {
+        this.#isDuplicatedNameExists(cannotEatMenuArray);
+        this.#isVaildNumberOfCannotEatMenu(cannotEatMenuArray);
+        this.#isInSampleMenu(cannotEatMenuArray, sampleMenu);
+    }
+
+    static #isInSampleMenu(cannotEatMenuArray, sampleMenu) {
+        cannotEatMenuArray.forEach(menu => {
+            if (!sampleMenu.includes(menu)) {
+                throw new WoowaError(MENU_ERROR.NON_SAMPLE_MENU);
+            }
+        }); 
+    }
+
+    static #isVaildNumberOfCannotEatMenu(cannotEatMenuArray) {
+        const cannotEatMenuLength = cannotEatMenuArray.length;
+
+        if (cannotEatMenuLength > MENU.NUMBER_OF_CANNT_EAT_MENU_END) {
+            throw new WoowaError(MENU_ERROR.INVALID_NUMBER_OF_CANNOT_EAT_MENU);
+        }
+    }
+
     static #isValidNameOfCoach(name) {
         const nameLength = name.length;
 

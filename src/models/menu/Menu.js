@@ -1,24 +1,47 @@
 import { MenuValidator } from "./utils/MenuValidator.js";
-import { SEPARATOR } from "../../shared/index.js";
+import { SEPARATOR, SAMPLE } from "../../shared/index.js";
 
 class Menu {
     #coachArray;
+    #sampleMenu;
 
     constructor(namesOfCoach) {
         MenuValidator.isSplittedBySeparator(namesOfCoach);
 
-        const arrayOfCoach = this.#splitNamesOfCoach(namesOfCoach);
+        const arrayOfCoach = this.#splitNames(namesOfCoach);
         MenuValidator.isValidCoachArray(arrayOfCoach);
 
         this.#coachArray = arrayOfCoach;
+        this.#sampleMenu = this.#getSampleMenu();
     }
 
-    #splitNamesOfCoach(namesOfCoach) {
-        return namesOfCoach.split(SEPARATOR);
+    #splitNames(names) {
+        return names.split(SEPARATOR);
     }
+
+    #getSampleMenu() {
+        return this.#splitNames(this.#getSampleMenuStr());
+    }
+
+    #getSampleMenuStr() {
+        const eachSampleMenuStr = Object.values(SAMPLE);
+
+        return eachSampleMenuStr.join(SEPARATOR);
+    }
+
 
     getCoachArray() {
         return this.#coachArray;
+    }
+
+    getSampleMenu() {
+        return this.#sampleMenu;
+    }
+
+    getCannotEatMenu(cannotEatMenu) {
+        const cannotEatMenuArray = this.#splitNames(cannotEatMenu);
+
+        MenuValidator.isValidCannotEatMenu(cannotEatMenuArray, this.#sampleMenu);
     }
 }
 
