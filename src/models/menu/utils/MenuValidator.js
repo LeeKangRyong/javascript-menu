@@ -1,0 +1,5 @@
+class MenuValidator {
+
+}
+
+export { MenuValidator };
