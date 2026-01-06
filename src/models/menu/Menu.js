@@ -1,5 +1,6 @@
 import { MenuValidator } from "./utils/MenuValidator.js";
 import { SEPARATOR, SAMPLE } from "../../shared/index.js";
+import { MENU } from "./utils/MenuConstants.js";
 
 class Menu {
     #coachArray;
@@ -19,8 +20,12 @@ class Menu {
         return names.split(SEPARATOR);
     }
 
+    #splitSampleMenu(sampleMenuArray) {
+        return sampleMenuArray.split(MENU.SAMPLE_MENU_SEPARATOR);
+    }
+
     #getSampleMenu() {
-        return this.#splitNames(this.#getSampleMenuStr());
+        return this.#splitSampleMenu(this.#getSampleMenuStr());
     }
 
     #getSampleMenuStr() {

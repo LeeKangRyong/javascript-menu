@@ -5,7 +5,10 @@ const MENU = Object.freeze({
     'NUMBER_OF_COACH_START' : 2,
     'NUMBER_OF_COACH_END' : 5,
 
-    'NUMBER_OF_CANNT_EAT_MENU_END' : 2
+    'NUMBER_OF_CANNT_EAT_MENU_END' : 2,
+
+
+    'SAMPLE_MENU_SEPARATOR' : ', '
 });
 
 const MENU_ERROR = Object.freeze({
