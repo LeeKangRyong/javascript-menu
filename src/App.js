@@ -17,12 +17,13 @@ class App {
 
 		// 2. 코치 이름 입력
 		const namesOfCoach = await Input.readNamesOfCoach();
-		
+
 		const menu = new Menu(namesOfCoach);
 		const coachArray = menu.getCoachArray();
 			// 구분자(,)로 구분돼있는지 체크 (ERROR)
 			// 코치 이름이 2 <= ? <= 4인지 체크 (ERROR)
 			// 코치 수가 2 <= ? <= 5인지 체크 (ERROR)
+			// 코치 이름이 중복되는지 체크 (ERROR)
 
 		// 3. 각 코치마다 못 먹는 메뉴 입력 (코치 수만큼 반복)
 			// 비어있으면 못 먹는 음식 없는 거로 하기

@@ -13,6 +13,8 @@ class MenuValidator {
 
     static isValidCoachArray(coachArray) {
         this.#isValidNumberOfCoach(coachArray);
+        this.#isDuplicatedNameExists(coachArray);
+
         coachArray.forEach(coach => this.#isValidNameOfCoach(coach));
     }
 
@@ -29,6 +31,12 @@ class MenuValidator {
 
         if (lengthOfCoachArray < MENU.NUMBER_OF_COACH_START || lengthOfCoachArray > MENU.NUMBER_OF_COACH_END) {
             throw new WoowaError(MENU_ERROR.INVALID_NUMBER_OF_COACH);
+        }
+    }
+
+    static #isDuplicatedNameExists(coachArray) {
+        if (coachArray.length !== new Set(coachArray).size) {
+            throw new WoowaError(MENU_ERROR.DUPLICATED_NAME_EXISTS);
         }
     }
 }

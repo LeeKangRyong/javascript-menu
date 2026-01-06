@@ -9,7 +9,8 @@ const MENU = Object.freeze({
 const MENU_ERROR = Object.freeze({
     'INVALID_SEPARATOR' : 'Invalid separator',
     'INVALID_LENGTH_OF_NAME' : 'Length of coach name has to be between 2 and 4',
-    'INVALID_NUMBER_OF_COACH' : 'The number of coach has to be between 2 and 5'
+    'INVALID_NUMBER_OF_COACH' : 'The number of coach has to be between 2 and 5',
+    'DUPLICATED_NAME_EXISTS' : 'Duplicated coach name exists'
 });
 
 export { MENU, MENU_ERROR };
