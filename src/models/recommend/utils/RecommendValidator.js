@@ -1,5 +1,0 @@
-class RecommendValidator {
-
-}
-
-export { RecommendValidator };
