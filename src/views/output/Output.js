@@ -12,8 +12,19 @@ class Output {
         MissionUtils.Console.print('\n');
     }
 
-    static printResult() {
+    static printResult(allCoachResults) {
         MissionUtils.Console.print(OUTPUT.RESULT);
+        
+        const days = ['구분', '월요일', '화요일', '수요일', '목요일', '금요일'];
+        MissionUtils.Console.print(`[ ${days.join(' | ')} ]`);
+        
+        const categories = ['카테고리', ...allCoachResults[0].categories];
+        MissionUtils.Console.print(`[ ${categories.join(' | ')} ]`);
+        
+        allCoachResults.forEach(result => {
+            const row = [result.coach, ...result.menus];
+            MissionUtils.Console.print(`[ ${row.join(' | ')} ]`);
+        });
     }
 
     static printComplete() {

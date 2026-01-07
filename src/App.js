@@ -54,7 +54,7 @@ class App {
 			// 한 카테고리에 대한 음식이 3개 이상 있는지 체크 (ERROR)
 
 		// 5. 결과 출력하기
-		Output.printResult();
+		Output.printResult(allCoachResults);
 		Output.printSpace();
 		Output.printComplete();
 	}
