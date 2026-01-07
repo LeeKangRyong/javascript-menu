@@ -46,7 +46,14 @@ class Recommend {
         const recommendCategory = this.#chooseCategory();
         const menuOfRecommendCategory = this.#eatableMenuObject[recommendCategory];
 
-        const recommendMenu = MissionUtils.Random.shuffle(menuOfRecommendCategory)[0];
+        const menuIndices = Array.from(
+            { length: menuOfRecommendCategory.length }, 
+            (_, i) => i
+        );
+        
+        const shuffledMenuIndices = MissionUtils.Random.shuffle(menuIndices);
+        
+        const recommendMenu = menuOfRecommendCategory[shuffledMenuIndices[0]];
 
         return [recommendCategory, recommendMenu];
     }
