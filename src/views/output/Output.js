@@ -12,6 +12,14 @@ class Output {
         MissionUtils.Console.print('\n');
     }
 
+    static printResult() {
+        MissionUtils.Console.print(OUTPUT.RESULT);
+    }
+
+    static printComplete() {
+        MissionUtils.Console.print(OUTPUT.COMPLETE);
+    }
+
     // WoowaError인 경우, 메시지만 출력. 그 외의 에러는 접두사와 함께 출력
     static printError(errorMessage) {
         if (errorMessage instanceof WoowaError) {
