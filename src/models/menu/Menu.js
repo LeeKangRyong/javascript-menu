@@ -1,6 +1,5 @@
 import { MenuValidator } from "./utils/MenuValidator.js";
 import { SEPARATOR, SAMPLE } from "../../shared/index.js";
-import { MENU } from "./utils/MenuConstants.js";
 
 class Menu {
     #coachArray;
@@ -20,8 +19,11 @@ class Menu {
         return names.split(SEPARATOR);
     }
 
-    #splitSampleMenu(sampleMenuArray) {
-        return sampleMenuArray.split(MENU.SAMPLE_MENU_SEPARATOR);
+    #splitSampleMenu(sampleMenuStr) {
+        return sampleMenuStr
+            .split(/,\s*/)
+            .map(menu => menu.trim())
+            .filter(menu => menu.length > 0);
     }
 
     #getSampleMenu() {
@@ -44,9 +46,14 @@ class Menu {
     }
 
     getCannotEatMenu(cannotEatMenu) {
-        const cannotEatMenuArray = this.#splitNames(cannotEatMenu);
+        if (!cannotEatMenu || cannotEatMenu.trim() === '') {
+            return [];
+        }
 
+        const cannotEatMenuArray = this.#splitNames(cannotEatMenu);
         MenuValidator.isValidCannotEatMenu(cannotEatMenuArray, this.#sampleMenu);
+        
+        return cannotEatMenuArray;
     }
 }
 
