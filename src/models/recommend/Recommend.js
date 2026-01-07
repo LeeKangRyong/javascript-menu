@@ -16,22 +16,11 @@ class Recommend {
         return this.#eatableMenuObject;
     }
 
-    // 카테고리를 선택하고 해당 카테고리에서 메뉴를 추천
     getRecommendMenu() {
-        const category = this.#chooseCategory();
-        const menuOfCategory = this.#eatableMenuObject[category];
-
-        const menuIndices = Array.from(
-            { length: menuOfCategory.length }, 
-            (_, i) => i
-        );
-        
-        const shuffledMenuIndices = MissionUtils.Random.shuffle(menuIndices);
-        const menu = menuOfCategory[shuffledMenuIndices[0]];
-
-        return [category, menu];
+        return this.#chooesMenuOfCategory();
     }
 
+    // TODO : 못 먹는 음식 제외하기
     #getEatableMenu() {
         let eatableMenuObject = {};
         
@@ -52,9 +41,32 @@ class Recommend {
         return categoryMenuString.split(SEPARATOR).map(menu => menu.trim());
     }
 
+    // TODO : 한 카테고리에서 음식 선택
+    #chooesMenuOfCategory() {
+        const recommendCategory = this.#chooseCategory();
+        const menuOfRecommendCategory = this.#eatableMenuObject[recommendCategory];
+
+        const ㅡ = Array.from(
+            { length: menuOfRecommendCategory.length }, 
+            (_, i) => i
+        );
+        
+        // 2. Random.shuffle()로 인덱스 배열 섞기 (숫자 배열이므로 가능!)
+        const shuffledㅡ = MissionUtils.Random.shuffle(ㅡ);
+        
+        // 3. 첫 번째 인덱스로 메뉴 선택
+        const recommendMenu = menuOfRecommendCategory[shuffledIndices[0]];
+
+        return [recommendCategory, recommendMenu];
+    }
+
+    // TODO : 카테고리 선택
     #chooseCategory() {
-        const categoryIndex = MissionUtils.Random.pickNumberInRange(1, 5);
-        return this.#categories[categoryIndex - 1];
+        return this.#categories[this.#getCategoryNumber()-1];
+    }
+
+    #getCategoryNumber() {
+        return MissionUtils.Random.pickNumberInRange(1, 5);
     }
 }
 

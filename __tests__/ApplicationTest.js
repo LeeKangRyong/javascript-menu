@@ -1,13 +1,11 @@
-const MissionUtils = require('@woowacourse/mission-utils');
-const App = require('../src/App');
+import { MissionUtils } from '@woowacourse/mission-utils';
+import App from '../src/App.js';
 
 const mockQuestions = (answers) => {
-	MissionUtils.Console.readLine = jest.fn();
+	MissionUtils.Console.readLineAsync = jest.fn();
 	answers.reduce((acc, input) => {
-		return acc.mockImplementationOnce((_, callback) => {
-			callback(input);
-		});
-	}, MissionUtils.Console.readLine);
+		return acc.mockResolvedValueOnce(input);
+	}, MissionUtils.Console.readLineAsync);
 };
 
 const mockRandoms = (numbers) => {
@@ -49,7 +47,7 @@ describe('점심 메뉴 테스트', () => {
 	});
 
 	describe('전체 기능 테스트', () => {
-		test('카테고리 메뉴 중복 없는 추천', () => {
+		test('카테고리 메뉴 중복 없는 추천', async () => {
 			const logSpy = getLogSpy();
 
 			mockRandoms([2, 5, 1, 3, 4]);
@@ -73,7 +71,7 @@ describe('점심 메뉴 테스트', () => {
 			]);
 
 			const app = new App();
-			app.play();
+			await app.run();
 			const log = getOutput(logSpy);
 
 			expect(log.replace(/\n/g, '')).toEqual(
