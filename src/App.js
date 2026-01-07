@@ -1,13 +1,11 @@
 import { Input, Output } from "./views/index.js";
 import { Menu } from "./models/index.js";
-import { SAMPLE } from "./shared/index.js";
 import { RecommendService } from "./services/index.js";
 
 class App {
 	async run() {
 		// 1. 시작 문구 출력
 		Output.printHeader();
-		console.log(Object.values(SAMPLE));
 
 		// 2. 코치 이름 입력
 		const namesOfCoach = await Input.readNamesOfCoach();
@@ -44,8 +42,6 @@ class App {
 				// 한 카테고리에 대한 음식이 3개 이상 있는지 체크 (ERROR)
 			allCoachResults.push(weekResult);
 		}
-
-		console.log(allCoachResults);
 		
 		// 5. 결과 출력하기
 		Output.printResult(allCoachResults);
